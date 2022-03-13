@@ -7,7 +7,7 @@ interface HeaderProp {
 
 const Header = (prop: HeaderProp) => {
   const { callback } = prop;
-  const [num, setNum] = useState<number>(20);
+  const [num, setNum] = useState<number>(10);
   const [r18, setR18] = useState<boolean>(false);
 
   useEffect(() => {
@@ -24,11 +24,13 @@ const Header = (prop: HeaderProp) => {
   };
 
   return (
-    <div style={{ position: 'fixed' }}>
+    <div style={{ position: 'fixed', zIndex: 10 }}>
       <label htmlFor="num">Num: </label>
       <input
         name="num"
         type="number"
+        min={1}
+        max={10}
         value={num}
         onChange={(e) => setNum(parseInt(e.target.value))}
       />
